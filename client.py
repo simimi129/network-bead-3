@@ -11,11 +11,11 @@ packer = struct.Struct('c I')
 end = False
 while not end:
   if start != end:
-      op = random.choice(ops)
-      m = (end + start) / 2
+    op = random.choice(ops)
+    m = (end + start) / 2
   else:
-      op = "="
-      m = start
+    op = "="
+    m = start
   data = packer.pack(op.encode(), m)
   sock.sendall(data)
   message = sock.recv(packer.size)
@@ -27,7 +27,7 @@ while not end:
     end = True
   elif r == 'I':
     if op == ">":
-      start = m +1 
+      start = m + 1 
     else:
       finish = m - 1
   elif r == 'N':
